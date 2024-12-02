@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Jammin/static/css/main.cec547ea.css",
-    "main.js": "/Jammin/static/js/main.8b9715e8.js",
-    "static/js/453.3d322241.chunk.js": "/Jammin/static/js/453.3d322241.chunk.js",
-    "static/media/background_photo.jpg": "/Jammin/static/media/background_photo.a0687f3fe6f1303a2d18.jpg",
-    "index.html": "/Jammin/index.html",
-    "main.cec547ea.css.map": "/Jammin/static/css/main.cec547ea.css.map",
-    "main.8b9715e8.js.map": "/Jammin/static/js/main.8b9715e8.js.map",
-    "453.3d322241.chunk.js.map": "/Jammin/static/js/453.3d322241.chunk.js.map"
+    "main.css": "/static/css/main.1ae6a183.css",
+    "main.js": "/static/js/main.08486fd9.js",
+    "static/js/453.3d322241.chunk.js": "/static/js/453.3d322241.chunk.js",
+    "static/media/background_photo.jpg": "/static/media/background_photo.a0687f3fe6f1303a2d18.jpg",
+    "index.html": "/index.html",
+    "main.1ae6a183.css.map": "/static/css/main.1ae6a183.css.map",
+    "main.08486fd9.js.map": "/static/js/main.08486fd9.js.map",
+    "453.3d322241.chunk.js.map": "/static/js/453.3d322241.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cec547ea.css",
-    "static/js/main.8b9715e8.js"
+    "static/css/main.1ae6a183.css",
+    "static/js/main.08486fd9.js"
   ]
 }
