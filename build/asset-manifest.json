@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Jammin/static/css/main.cec547ea.css",
+    "main.js": "/Jammin/static/js/main.8b9715e8.js",
+    "static/js/453.3d322241.chunk.js": "/Jammin/static/js/453.3d322241.chunk.js",
+    "static/media/background_photo.jpg": "/Jammin/static/media/background_photo.a0687f3fe6f1303a2d18.jpg",
+    "index.html": "/Jammin/index.html",
+    "main.cec547ea.css.map": "/Jammin/static/css/main.cec547ea.css.map",
+    "main.8b9715e8.js.map": "/Jammin/static/js/main.8b9715e8.js.map",
+    "453.3d322241.chunk.js.map": "/Jammin/static/js/453.3d322241.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cec547ea.css",
+    "static/js/main.8b9715e8.js"
+  ]
+}
