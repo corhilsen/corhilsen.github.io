@@ -1,6 +1,6 @@
 let accessToken = '';
 const CLIENT_ID = "637204625e214cd6b4af3886a8a8dc24"
-const REDIRECT_URI = "https://corhilsen.github.io/"
+const REDIRECT_URI = "https://corhilsen.github.io"
 const SCOPE = "app-remote-control playlist-modify-public playlist-modify-private user-library-read user-top-read user-read-recently-played user-read-private playlist-read-private user-read-email playlist-read-collaborative"; 
 
 const Spotify = {
