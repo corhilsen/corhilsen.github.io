@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from'react';
-import App from '../../App/App';
-
 let accessToken = '';
 let restorePlaylistInfoCallback;
 const CLIENT_ID = "637204625e214cd6b4af3886a8a8dc24"
@@ -33,9 +30,8 @@ const Spotify = {
             window.localStorage.setItem('SpotifyToken', JSON.stringify({ accessToken, expirationTime }));
         
             const savedPlaylistInfo = JSON.parse(localStorage.getItem('playlistInfo') || '{}');
-            if (savedPlaylistInfo.name) {
-                // You'll need to implement a method to update the UI with this information
-                this.restorePlaylistInfo(savedPlaylistInfo);
+            if (savedPlaylistInfo.name && restorePlaylistInfoCallback) {
+                restorePlaylistInfoCallback(savedPlaylistInfo);
             }
     
             window.history.pushState('Access Token', null, '/');                          
