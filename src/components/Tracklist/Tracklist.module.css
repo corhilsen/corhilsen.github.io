@@ -5,16 +5,16 @@
 .Track {
     border-bottom: 1.75px dashed #0ab791;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-around;
     margin: 0.5rem 0 0.5rem 0;
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .Track button {
     cursor: pointer;
-    align-items: center;
+    align-items: right;
     padding-left: 3rem;
     margin-left: 3rem;
     font-size: 1rem;

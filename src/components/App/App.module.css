@@ -1,5 +1,5 @@
 body {
-  background-image: url('./background.png');
+  background-image: url('./banner.jpg');
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -84,7 +84,7 @@ h2 {
   height: 100%;
   padding: 0 17% 10% 17%;
   background-image: url('./background.png');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
