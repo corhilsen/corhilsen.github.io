@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
@@ -61,20 +61,21 @@ function App() {
         });
     }
 
+    const handleSearchChange = useCallback((term) => {
+        setSearchTerm(term); // Your existing state for the search term
+        setIsSearching(term.trim().length > 0); // Set `isSearching` to true if term exists
+    }, [setSearchTerm, setIsSearching]);    
 
-    function search(term) {
+    const search = useCallback((term) => {
+        handleSearchChange(term);
         Spotify.search(term).then(result => {
             const filteredResults = result.filter(
                 track => !playlistTracks.some(playlistTrack => playlistTrack.id === track.id)
             );
             setSearchResults(filteredResults);
         });
-    }
+    }, [handleSearchChange, playlistTracks, setSearchResults]);
 
-    function handleSearchChange(term) {
-        setSearchTerm(term); // Your existing state for the search term
-        setIsSearching(term.trim().length > 0); // Set `isSearching` to true if term exists
-    }    
 
     async function fetchUserPlaylists() {
         try {
@@ -123,18 +124,22 @@ function App() {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const savedSearch = urlParams.get("search");
+       
         if (savedSearch) {
             setSearchTerm(savedSearch);
             search(savedSearch);
             window.history.replaceState(null, "", "/");
         }
-    }, []);
+    }, [search]);
 
     useEffect(() => {
         const savedPlaylistName = window.localStorage.getItem('playlistName');
         const savedPlaylistTracks = JSON.parse(window.localStorage.getItem('playlistTracks') || '[]');
+        const savedSearchTerm = window.localStorage.getItem('searchTerm');
+
         if (savedPlaylistName) setPlaylistName(savedPlaylistName);
         if (savedPlaylistTracks.length > 0) setPlaylistTracks(savedPlaylistTracks);
+        if (savedSearchTerm) setSearchTerm(savedSearchTerm);
     }, []);
 
     useEffect(() => {

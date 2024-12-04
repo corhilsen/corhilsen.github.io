@@ -7,9 +7,7 @@ function Tracklist(props) {
         <div>
             {props.userSearchResults.map(track => (
                 <div className={styles.Track} key={track.id}>
-                    <div className={styles['Track-details']}>
-                        <p>{track.name} by {track.artist}</p>}
-                    </div>
+                    <p>{track.name} by {track.artist}</p>
                     <button onClick={() => props.onAdd ? props.onAdd(track) : props.onRemove(track)}>
                         {props.isRemoval ? '-' : '+'}
                     </button>
