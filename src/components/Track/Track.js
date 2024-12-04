@@ -22,9 +22,11 @@ function Track(props) {
     function passTrack() {
         props.onAdd(props.track);
     }
+
     function passTrackToRemove() {
         props.onRemove(props.track);
     }
+    
     return (
         <div className={styles.Track}>
             <div className={styles['Track-information']}>

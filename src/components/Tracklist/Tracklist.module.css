@@ -15,12 +15,6 @@
     font-size: 1.3rem;
 }
 
-.NoPreview {
-    font-size: 0.8rem;
-    color: gray;      /* Subtle color to de-emphasize */
-    margin-top: 0.5rem;
-}
-
 .Track button {
     cursor: pointer;
     align-items: center;

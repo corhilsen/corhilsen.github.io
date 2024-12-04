@@ -1,9 +1,17 @@
+import React, { useState, useEffect } from'react';
+import App from '../../App/App';
+
 let accessToken = '';
+let restorePlaylistInfoCallback;
 const CLIENT_ID = "637204625e214cd6b4af3886a8a8dc24"
 const REDIRECT_URI = "https://corhilsen.github.io"
 const SCOPE = "app-remote-control playlist-modify-public playlist-modify-private user-library-read user-top-read user-read-recently-played user-read-private playlist-read-private user-read-email playlist-read-collaborative"; 
 
 const Spotify = {
+    init(restorePlaylistInfo) {
+        restorePlaylistInfoCallback = restorePlaylistInfo;
+    },
+
     getAccessToken() {
         if (accessToken) {
             return accessToken;
@@ -17,18 +25,42 @@ const Spotify = {
             const expiresIn = Number(expiryTime[1]);
             const expirationTime = new Date().getTime() + expiresIn * 1000;
 
-            window.setTimeout(() => (accessToken = ''), expiresIn * 1000);
+            const savedPlaylistInfo = JSON.parse(localStorage.getItem('playlistInfo') || '{}');
+            if (savedPlaylistInfo.name && restorePlaylistInfoCallback) {
+                restorePlaylistInfoCallback(savedPlaylistInfo);
+            }
+
+            window.setTimeout(() => {
+                accessToken = ''; 
+                window.localStorage.removeItem('SpotifyToken');
+            }, expiresIn * 1000);
+
             window.localStorage.setItem('SpotifyToken', JSON.stringify({ accessToken, expirationTime }));
-            window.history.pushState('Access Token', null, '/');
+        
+            const savedPlaylistInfo = JSON.parse(localStorage.getItem('playlistInfo') || '{}');
+            if (savedPlaylistInfo.name) {
+                // You'll need to implement a method to update the UI with this information
+                this.restorePlaylistInfo(savedPlaylistInfo);
+            }
+    
+            window.history.pushState('Access Token', null, '/');                          
             return accessToken;
         }
 
         const storedToken = JSON.parse(window.localStorage.getItem('SpotifyToken'));
-        if (storedToken && storedToken.expirationTime > new Date().getTime()) {
+        if (storedToken && storedToken.expirationTime > new Date().getTime()) 
+    {
             accessToken = storedToken.accessToken;
             return accessToken;
-       
         }
+
+        const currentPlaylistInfo = {
+            name: document.getElementById('playlist-name').value,
+            tracks: JSON.parse(localStorage.getItem('playlistTracks') || '[]')
+        };
+    
+        localStorage.setItem('playlistInfo', JSON.stringify(currentPlaylistInfo));
+
 
         const redirect = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=${encodeURI(SCOPE)}&redirect_uri=${encodeURI(REDIRECT_URI)}`;
         window.location = redirect;

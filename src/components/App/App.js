@@ -17,6 +17,7 @@ function App() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
+        Spotify.init(restorePlaylistInfo);
         Spotify.getAccessToken();
     }, []);
 
@@ -97,6 +98,15 @@ function App() {
         }
     }
 
+    function restorePlaylistInfo(savedPlaylistInfo) {
+        if (savedPlaylistInfo.name) {
+            setPlaylistName(savedPlaylistInfo.name);
+        }
+        if (savedPlaylistInfo.tracks && savedPlaylistInfo.tracks.length > 0) {
+            setPlaylistTracks(savedPlaylistInfo.tracks);
+        }
+    }
+
     useEffect(() => {
         if (isSaving) {
             document.body.style.overflow = "hidden";
@@ -114,6 +124,7 @@ function App() {
         const urlParams = new URLSearchParams(window.location.search);
         const savedSearch = urlParams.get("search");
         if (savedSearch) {
+            setSearchTerm(savedSearch);
             search(savedSearch);
             window.history.replaceState(null, "", "/");
         }
