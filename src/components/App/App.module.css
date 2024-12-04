@@ -1,7 +1,9 @@
 body {
   background-image: url('./banner.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  max-hieght 20%;
   margin: 0;
   overflow: auto; 
 }
