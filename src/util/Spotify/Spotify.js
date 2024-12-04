@@ -25,11 +25,6 @@ const Spotify = {
             const expiresIn = Number(expiryTime[1]);
             const expirationTime = new Date().getTime() + expiresIn * 1000;
 
-            const savedPlaylistInfo = JSON.parse(localStorage.getItem('playlistInfo') || '{}');
-            if (savedPlaylistInfo.name && restorePlaylistInfoCallback) {
-                restorePlaylistInfoCallback(savedPlaylistInfo);
-            }
-
             window.setTimeout(() => {
                 accessToken = ''; 
                 window.localStorage.removeItem('SpotifyToken');
